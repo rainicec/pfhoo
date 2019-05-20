@@ -17,7 +17,7 @@
             $grow = $conn -> query($sel);
             $garr = $grow -> fetch_all(MYSQLI_ASSOC);
             $garr['num'] = $arr[$j]['num'];
-            $garr['id'] = $arr[$j]['id'];
+            $garr['id'] = $arr[$j]['gid'];
             $responsearr[$gid] = $garr;
         };
 

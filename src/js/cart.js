@@ -21,7 +21,7 @@ require(['config'], function () {
 
             $('#topnav').on('click', '.loginout', function () {
                 removeCookie('user');
-                location.href = 'index.html';
+                location.href = '../index.html';
             })
         } else {
             $('#topnav').on('click', '.loginout', function () {
@@ -73,6 +73,7 @@ require(['config'], function () {
                     var godhtml = '';
                     for (const key in godobj) {
                         var imgpath = godobj[key][0].imgpath.split('&');
+
                         godhtml += `<div  data-id="${godobj[key]['id']}">
                             <div class="goodsname clearfix">
                                 <div class="check_box">
@@ -145,6 +146,18 @@ require(['config'], function () {
                             buynum = 0
                         }
                         $(this).parent().find('.num').val(buynum);
+                        $.ajax({
+                            type: "get",
+                            url: "../api/incart.php",
+                            data: {
+                                "gid": $(this).parent().parent().parent().parent().parent().attr("data-id"),
+                                'user': getCookie('user'),
+                                'num': buynum
+                            },
+                            success: function (response) {
+
+                            }
+                        });
                         var _this = $(this);
                         anum(_this)
                         alladd()
@@ -156,6 +169,18 @@ require(['config'], function () {
                             buynum = $(this).parent().parent().find('.stock').text()
                         }
                         $(this).parent().find('.num').val(buynum);
+                        $.ajax({
+                            type: "get",
+                            url: "../api/incart.php",
+                            data: {
+                                "gid": $(this).parent().parent().parent().parent().parent().attr("data-id"),
+                                'user': getCookie('user'),
+                                'num': buynum
+                            },
+                            success: function (response) {
+
+                            }
+                        });
                         var _this = $(this);
                         anum(_this)
                         alladd()
@@ -174,6 +199,18 @@ require(['config'], function () {
 
                             $(this).val(buynum)
                         }
+                        $.ajax({
+                            type: "get",
+                            url: "../api/incart.php",
+                            data: {
+                                "gid": $(this).parent().parent().parent().parent().parent().attr("data-id"),
+                                'user': getCookie('user'),
+                                'num': buynum
+                            },
+                            success: function (response) {
+
+                            }
+                        });
                         var _this = $(this);
                         anum(_this)
                         alladd()
@@ -204,6 +241,24 @@ require(['config'], function () {
                             });
                         }
                     })
+                    // $('#main').on('click', '.alldel', function () {
+
+                    //     if (confirm('确认要删除选中的商品吗？')) {
+                    //         $('#main ')
+                    //         $.ajax({
+                    //             type: "get",
+                    //             url: "../api/delcart.php",
+                    //             data: "id=" + farid,
+                    //             success: function (response) {
+                    //                 if (response == 'yes') {
+                    //                     _this.parent().parent().parent().parent().parent().remove();
+                    //                 } else {
+                    //                     alert('删除失败，请稍后再试')
+                    //                 }
+                    //             }
+                    //         });
+                    //     }
+                    // })
 
                     //勾选
                     $('#gbox').on('click', '.check_box', function () {

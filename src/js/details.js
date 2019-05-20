@@ -32,7 +32,7 @@ require(['config'], function () {
 
                     $('#topnav').on('click', '.loginout', function () {
                         removeCookie('user');
-                        location.href = 'index.html';
+                        location.href = '../index.html';
                     })
                 } else {
                     $('#topnav').on('click', '.loginout', function () {
