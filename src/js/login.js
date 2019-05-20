@@ -99,7 +99,7 @@ require(['config'], function () {
                                 $('.pswts').css('background', '')
                                 if (_this.parent().find('.password').val() == datapsw) {
                                     setCookie('user', _this.parent().find('.phone').val(), 7);
-                                    location.href = '../1index.html'
+                                    location.href = '../index.html'
                                 } else {
                                     $('.pswfalse').css('display', 'block');
                                     setTimeout(function () {
@@ -147,30 +147,30 @@ require(['config'], function () {
         })
 
 
-        //登录状态
-        if (getCookie('user')) {
-            $('#topnav .username').html(getCookie('user'));
-            $('#topnav .loginout').html('退出');
-            $('#topnav .regsj').html('我的数据包');
-            $('#topnav .mesg').html('我的私信');
+        // //登录状态
+        // if (getCookie('user')) {
+        //     $('#topnav .username').html(getCookie('user'));
+        //     $('#topnav .loginout').html('退出');
+        //     $('#topnav .regsj').html('我的数据包');
+        //     $('#topnav .mesg').html('我的私信');
 
-            $('#topnav').on('click', '.loginout', function () {
-                removeCookie('user');
-                location.href = 'index.html';
-            })
-        } else {
-            $('#topnav').on('click', '.loginout', function () {
-                location.href = 'login.html';
-            })
-            $('#topnav').on('click', '.regsj', function () {
-                location.href = 'register.html';
-            })
-        }
+        //     $('#topnav').on('click', '.loginout', function () {
+        //         removeCookie('user');
+        //         location.href = 'index.html';
+        //     })
+        // } else {
+        //     $('#topnav').on('click', '.loginout', function () {
+        //         location.href = 'login.html';
+        //     })
+        //     $('#topnav').on('click', '.regsj', function () {
+        //         location.href = 'register.html';
+        //     })
+        // }
 
 
-        $('#main').on('click', '.reg', function () {
-            location.href = 'register.html'
-        })
+        // $('#main').on('click', '.reg', function () {
+        //     location.href = 'register.html'
+        // })
         //短信登录验证
         // $('#login .codemain').on('click', '.logbtn', function () {
         //     var _this = $(this);

@@ -231,6 +231,7 @@ require(['config'], function () {
                         'psw': $('#password').val()
                     },
                     success: function (response) {
+                        console.log(response)
                         if (response) {
                             setCookie('user', $('#phone').val(), 7);
                             location.href = '../index.html';
@@ -241,24 +242,24 @@ require(['config'], function () {
         })
 
 
-        //登录状态
-        if (getCookie('user')) {
-            $('#topnav .username').html(getCookie('user'));
-            $('#topnav .loginout').html('退出');
-            $('#topnav .regsj').html('我的数据包');
-            $('#topnav .mesg').html('我的私信');
+        // //登录状态
+        // if (getCookie('user')) {
+        //     $('#topnav .username').html(getCookie('user'));
+        //     $('#topnav .loginout').html('退出');
+        //     $('#topnav .regsj').html('我的数据包');
+        //     $('#topnav .mesg').html('我的私信');
 
-            $('#topnav').on('click', '.loginout', function () {
-                removeCookie('user');
-                location.href = 'index.html';
-            })
-        } else {
-            $('#topnav').on('click', '.loginout', function () {
-                location.href = 'login.html';
-            })
-            $('#topnav').on('click', '.regsj', function () {
-                location.href = 'register.html';
-            })
-        }
+        //     $('#topnav').on('click', '.loginout', function () {
+        //         removeCookie('user');
+        //         location.href = 'register.html';
+        //     })
+        // } else {
+        //     $('#topnav').on('click', '.loginout', function () {
+        //         location.href = 'login.html';
+        //     })
+        //     $('#topnav').on('click', '.regsj', function () {
+        //         location.href = 'register.html';
+        //     })
+        // }
     })
 })
