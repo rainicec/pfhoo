@@ -230,13 +230,16 @@ require(['config'], function () {
                             $.ajax({
                                 type: "get",
                                 url: "../api/delcart.php",
-                                data: "id=" + farid,
+                                data: "id=" + farid + "&user=" + getCookie('user'),
                                 success: function (response) {
                                     if (response == 'yes') {
                                         _this.parent().parent().parent().parent().parent().remove();
                                         alladd()
                                     } else {
                                         alert('删除失败，请稍后再试')
+                                    }
+                                    if ($('#gbox .check').length == 0) {
+                                        $('#gbox').html('<img src="../css/img/emptycart.jpg" alt="" class="emptycart">')
                                     }
                                 }
                             });
@@ -252,7 +255,7 @@ require(['config'], function () {
                                     $.ajax({
                                         type: "get",
                                         url: "../api/delcart.php",
-                                        data: "id=" + farid,
+                                        data: "id=" + farid + "&user=" + getCookie('user'),
                                         success: function (response) {
                                             if (response == 'yes') {
                                                 _this.parent().parent().parent().remove();
