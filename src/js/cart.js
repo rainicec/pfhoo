@@ -234,6 +234,7 @@ require(['config'], function () {
                                 success: function (response) {
                                     if (response == 'yes') {
                                         _this.parent().parent().parent().parent().parent().remove();
+                                        alladd()
                                     } else {
                                         alert('删除失败，请稍后再试')
                                     }
@@ -241,24 +242,35 @@ require(['config'], function () {
                             });
                         }
                     })
-                    // $('#main').on('click', '.alldel', function () {
+                    $('#main').on('click', '.alldel', function () {
+                        if (confirm('确认要删除选中的商品吗？')) {
+                            $('#gbox .check').each(function () {
+                                console.log($(this))
+                                var farid = $(this).parent().parent().parent().attr('data-id');
+                                var _this = $(this);
+                                if ($(this).is(':checked')) {
+                                    $.ajax({
+                                        type: "get",
+                                        url: "../api/delcart.php",
+                                        data: "id=" + farid,
+                                        success: function (response) {
+                                            if (response == 'yes') {
+                                                _this.parent().parent().parent().remove();
+                                                alladd()
+                                            } else {
+                                                alert('删除失败，请稍后再试')
+                                            }
+                                            if ($('#gbox .check').length == 0) {
+                                                $('#gbox').html('<img src="../css/img/emptycart.jpg" alt="" class="emptycart">')
+                                            }
+                                        }
+                                    });
+                                }
+                            })
 
-                    //     if (confirm('确认要删除选中的商品吗？')) {
-                    //         $('#main ')
-                    //         $.ajax({
-                    //             type: "get",
-                    //             url: "../api/delcart.php",
-                    //             data: "id=" + farid,
-                    //             success: function (response) {
-                    //                 if (response == 'yes') {
-                    //                     _this.parent().parent().parent().parent().parent().remove();
-                    //                 } else {
-                    //                     alert('删除失败，请稍后再试')
-                    //                 }
-                    //             }
-                    //         });
-                    //     }
-                    // })
+                        }
+
+                    })
 
                     //勾选
                     $('#gbox').on('click', '.check_box', function () {
